@@ -1,0 +1,51 @@
+/*
+ * theme.css is the original site's stylesheet, untouched apart from asset URLs.
+ * This file holds only what the clone adds on top of it.
+ */
+
+@font-face {
+  font-family: Lato;
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(/fonts/lato-400.woff2) format("woff2");
+}
+
+@font-face {
+  font-family: Lato;
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(/fonts/lato-700.woff2) format("woff2");
+}
+
+@font-face {
+  font-family: "Playfair Display";
+  font-style: normal;
+  font-weight: 400 900;
+  font-display: swap;
+  src: url(/fonts/playfair-display-variable.woff2) format("woff2");
+}
+
+/*
+ * Links are placeholder <button>s. The theme already resets button chrome;
+ * these restore the bits of an <a>'s defaults it doesn't. Zero specificity so
+ * every theme class rule still wins.
+ */
+:where(.placeholder-link) {
+  color: inherit;
+  text-align: inherit;
+  line-height: inherit;
+  letter-spacing: inherit;
+  display: inline;
+}
+
+/* The theme only applies this hover to cards with an href. */
+.m-icon-card.placeholder-link {
+  transition: all 0.15s ease-in-out;
+}
+
+.m-icon-card.placeholder-link:hover {
+  background-color: rgba(var(--theme--primary-color--hover-rgb), 0.5);
+  backdrop-filter: blur(10px);
+}

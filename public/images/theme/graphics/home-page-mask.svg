@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="781.615" height="711.631" viewBox="0 0 781.615 711.631">
+  <defs>
+    <clipPath id="clip-path">
+      <rect x="73" y="137" width="781.615" height="711.631" fill="none"/>
+    </clipPath>
+  </defs>
+  <g id="Grupo_de_rolagem_3" data-name="Grupo de rolagem 3" transform="translate(-73 -137)" clip-path="url(#clip-path)" style="isolation: isolate">
+    <path id="Caminho_51" data-name="Caminho 51" d="M643.678,665.758c52-69.065,42.867-178.165,36.162-278.82C672.631,285.791,667.333,193.6,617.38,120.984,567.937,48.364,474.349-4.678,377.963-5.31,281.57-5.444,182.89,46.824,109.894,121.673,37.416,196.015-9.37,292.439-5.064,382.654S55.159,556.369,125.589,623.7C196.537,690.533,282,741.2,381.294,752.261c98.785,11.073,210.9-17.944,262.384-86.5" transform="matrix(-0.438, 0.899, -0.899, -0.438, 978.502, 335.574)" fill="#f06"/>
+  </g>
+</svg>
