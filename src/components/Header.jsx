@@ -7,6 +7,10 @@ export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   const toggleMenu = (name) => setOpenMenu((open) => (open === name ? null : name));
+  const closeMenus = () => {
+    setOpenMenu(null);
+    setMobileOpen(false);
+  };
 
   // One meganav at a time; close it on an outside click or Escape.
   useEffect(() => {
@@ -33,7 +37,7 @@ export default function Header() {
   return (
     <header className={`o-header${mobileOpen ? " o-header--mobile-open" : ""}`} style={{ viewTransitionName: "site-header" }}>
       <div className="o-header__container u-container">
-        <PlaceholderLink className="o-header__logo">
+        <PlaceholderLink className="o-header__logo" to="/" onClick={closeMenus}>
           <svg xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" width="159.447" height="60" viewBox="0 0 159.447 60">
             <defs>
               <clipPath id="a">
@@ -172,7 +176,7 @@ export default function Header() {
                           <p>We provide a range of ABA therapy services to children with autism across the United States.</p>
                         </div>
                         <div className="m-content__buttons">
-                          <PlaceholderLink className="m-content__button a-button a-button--small">
+                          <PlaceholderLink className="m-content__button a-button a-button--small" to="/about-aba-therapy" onClick={closeMenus}>
                             <span className="a-button__text">About ABA Therapy</span>
                             <span className="a-button__arrow">
                               <ButtonArrow />

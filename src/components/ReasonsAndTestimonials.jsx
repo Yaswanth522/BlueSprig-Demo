@@ -1,6 +1,6 @@
-import { useRef, useState } from "react";
 import PlaceholderLink from "./PlaceholderLink";
 import { ButtonArrow } from "./Icons";
+import useSnapSlider from "../utils/useSnapSlider";
 
 const REASONS = [
   "We create individualized plans for family guidance that best meets the needs of the family and the child.",
@@ -22,24 +22,7 @@ const TESTIMONIALS = [
 ];
 
 export default function ReasonsAndTestimonials() {
-  const listRef = useRef(null);
-  const [current, setCurrent] = useState(0);
-
-  // The list is a scroll-snap strip (theme CSS); the arrows just scroll it,
-  // wrapping at either end like the original looping slider.
-  const goTo = (index) => {
-    const list = listRef.current;
-    const next = (index + TESTIMONIALS.length) % TESTIMONIALS.length;
-    list.scrollTo({ left: list.children[next].offsetLeft - list.offsetLeft, behavior: "smooth" });
-    setCurrent(next);
-  };
-
-  // Keep the counter in sync when the strip is swiped directly.
-  const handleScroll = () => {
-    const list = listRef.current;
-    const step = list.children[1].offsetLeft - list.children[0].offsetLeft;
-    setCurrent(Math.round(list.scrollLeft / step));
-  };
+  const { listRef, current, handleScroll, prev, next } = useSnapSlider(TESTIMONIALS.length, { loop: true });
 
   return (
     <section id="testimonials" className="o-reasons-and-testimonials">
@@ -84,7 +67,7 @@ export default function ReasonsAndTestimonials() {
                   className="m-slider-navigation__arrow prev a-arrow-button a-arrow-button--left"
                   type="button"
                   aria-label="Previous"
-                  onClick={() => goTo(current - 1)}
+                  onClick={prev}
                 >
                   <span className="a-arrow-button__arrow">
                     <ButtonArrow />
@@ -98,7 +81,7 @@ export default function ReasonsAndTestimonials() {
                   className="m-slider-navigation__arrow next a-arrow-button"
                   type="button"
                   aria-label="Next"
-                  onClick={() => goTo(current + 1)}
+                  onClick={next}
                 >
                   <span className="a-arrow-button__arrow">
                     <ButtonArrow />

@@ -49,3 +49,29 @@
   background-color: rgba(var(--theme--primary-color--hover-rgb), 0.5);
   backdrop-filter: blur(10px);
 }
+
+/*
+ * Links inside rich text: the theme styles these as `.m-wysiwyg a`, so they
+ * need the same rules on the placeholder buttons (values copied from theme.css).
+ */
+.m-wysiwyg .placeholder-link {
+  --color: var(--text--accent-alt-color);
+  --color-hover: var(--text--accent-alt-color);
+  --decoration-color: var(--text--accent-alt-color);
+  --decoration-color-hover: var(--text--accent-alt-color);
+  position: relative;
+  display: inline-block;
+  color: var(--color);
+  font-size: inherit;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-decoration-color: var(--decoration-color);
+  text-underline-offset: 1px;
+  transition: all 0.15s ease-in-out;
+}
+
+.m-wysiwyg .placeholder-link:hover {
+  color: var(--color-hover);
+  text-decoration-color: var(--decoration-color-hover);
+  text-underline-offset: 2px;
+}

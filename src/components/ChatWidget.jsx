@@ -1,7 +1,9 @@
 import { useEffect, useRef, useState } from "react";
+import { useLocation } from "react-router-dom";
 import { BOT_ID, HOST, YM_LOADER_SRC } from "../utils/ymWidget";
 
 export default function ChatWidget() {
+  const { pathname } = useLocation();
   const [scriptReady, setScriptReady] = useState(!!window.ChatWidget);
   const hasInitialized = useRef(false);
 
@@ -18,8 +20,8 @@ export default function ChatWidget() {
   useEffect(() => {
     if (!scriptReady || typeof window.ChatWidget === "undefined") return;
 
-    // init() is a silent no-op if called twice without destroy() — guards
-    // StrictMode's double effect run in dev.
+    // Re-init on every route change so payload.pageUrl is always the current
+    // page. init() is a silent no-op if called again without destroy() first.
     if (hasInitialized.current && typeof window.ChatWidget.destroy === "function") {
       window.ChatWidget.destroy();
     }
@@ -34,7 +36,7 @@ export default function ChatWidget() {
       },
     });
     hasInitialized.current = true;
-  }, [scriptReady]);
+  }, [scriptReady, pathname]);
 
   return null;
 }

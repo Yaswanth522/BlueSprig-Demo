@@ -12,8 +12,11 @@ import ReasonsAndTestimonials from "../components/ReasonsAndTestimonials";
 import InsuranceLogos from "../components/InsuranceLogos";
 import FeaturedPosts from "../components/FeaturedPosts";
 import FindServicesCta from "../components/FindServicesCta";
+import usePageMeta from "../utils/usePageMeta";
 
 export default function Home() {
+  usePageMeta("BlueSprig | ABA Therapy & Autism Treatment Centers", "p-home t-home t-page");
+
   return (
     <main className="o-main" id="content">
       <HeroBanner />
